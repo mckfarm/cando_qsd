@@ -1,7 +1,7 @@
 ID	description	formula	particle_size	degradability	organic	measured_as	i_C	i_N	i_P	i_K	i_Mg	i_Ca	i_mass	i_charge	i_COD	i_NOD	f_BOD5_COD	f_uBOD_COD	f_Vmass_Totmass	CAS	PubChem
 S_NO3	nitrate	NO3-	Soluble	Undegradable	FALSE	N															
 S_NO2	nitrite	NO2-	Soluble	Undegradable	FALSE	N															
-S_NO	nitric oxide	NO-	Soluble	Undegradable	FALSE	N															
+S_NO	nitric oxide	NO	Soluble	Undegradable	FALSE	N															
 S_N2O	nitrous oxide	N2O	Dissolved gas	Undegradable	FALSE	N															
 S_N2	dinitrogen	N2	Dissolved gas	Undegradable	FALSE	N															
 S_S	readily degradable substrate		Soluble	Readily	TRUE	COD															
@@ -10,3 +10,4 @@ X_DPAO	phosphorus accumulating organisms		Particulate	Slowly	TRUE	COD			0.02
 X_PP	polyphosphate		Particulate	Undegradable	TRUE	COD															
 X_PHA	polyhydroxyalkanoates		Particulate	Slowly	TRUE	COD															
 X_I	inert biomass		Particulate	Undegradable	FALSE	COD			0.01												
+S_O2	oxygen	O2	Dissolved gas	Undegradable	FALSE																

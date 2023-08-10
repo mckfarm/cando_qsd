@@ -1,20 +1,31 @@
-	S_O2	S_F	S_A	S_I	S_NH4	S_N2	S_NO3	S_PO4	S_ALK	X_I	X_S	X_H	X_PAO	X_PP	X_PHA	X_AUT	X_MeOH	X_MeP	
-aero_hydrolysis		1-f_SI		f_SI	?			?	?		-1								K_h*S_O2/(K_O2+S_O2)*(X_S/X_H)/(K_X+X_S/X_H)*X_H
-anox_hydrolysis		1-f_SI		f_SI	?			?	?		-1								K_h*eta_NO3*K_O2/(K_O2+S_O2)*S_NO3/(K_NO3+S_NO3)*(X_S/X_H)/(K_X+X_S/X_H)*X_H
-anae_hydrolysis		1-f_SI		f_SI	?			?	?		-1								K_h*eta_fe*K_O2/(K_O2+S_O2)*K_NO3/(K_NO3+S_NO3)*(X_S/X_H)/(K_X+X_S/X_H)*X_H
-hetero_growth_S_F	1-1/Y_H	(-1)/Y_H			?			?	?			1							mu_H*S_O2/(K_O2_H+S_O2)*S_F/(K_F+S_F)*S_F/(S_F+S_A)*S_NH4/(K_NH4_H+S_NH4)*S_PO4/(K_P_H+S_PO4)*S_ALK/(K_ALK_H+S_ALK)*X_H
-hetero_growth_S_A	1-1/Y_H		(-1)/Y_H		?			?	?			1							mu_H*S_O2/(K_O2_H+S_O2)*S_A/(K_A_H+S_A)*S_A/(S_F+S_A)*S_NH4/(K_NH4_H+S_NH4)*S_PO4/(K_P_H+S_PO4)*S_ALK/(K_ALK_H+S_ALK)*X_H
-denitri_S_F		(-1)/Y_H			?	(1-Y_H)/(20/7*Y_H)	(Y_H-1)/(20/7*Y_H)	?	?			1							mu_H*eta_NO3_H*K_O2_H/(K_O2_H+S_O2)*S_NO3/(K_NO3_H+S_NO3)*S_F/(K_F+S_F)*S_F/(S_F+S_A)*S_NH4/(K_NH4_H+S_NH4)*S_PO4/(K_P_H+S_PO4)*S_ALK/(K_ALK_H+S_ALK)*X_H
-denitri_S_A			(-1)/Y_H		?	(1-Y_H)/(20/7*Y_H)	(Y_H-1)/(20/7*Y_H)	?	?			1							mu_H*eta_NO3_H*K_O2_H/(K_O2_H+S_O2)*S_NO3/(K_NO3_H+S_NO3)*S_A/(K_A_H+S_A)*S_A/(S_F+S_A)*S_NH4/(K_NH4_H+S_NH4)*S_PO4/(K_P_H+S_PO4)*S_ALK/(K_ALK_H+S_ALK)*X_H
-ferment		-1	1		?			?	?										q_fe*K_O2_H/(K_O2_H+S_O2)*K_NO3_H/(K_NO3_H+S_NO3)*S_F/(K_fe+S_F)*S_ALK/(K_ALK_H+S_ALK)*X_H
-hetero_lysis					?			?	?	f_XI_H	1-f_XI_H	-1							b_H*X_H
-PAO_storage_PHA			-1		?			Y_PO4	?					(-Y_PO4)	1				q_PHA*S_A/(K_A_PAO+S_A)*S_ALK/(K_ALK_PAO+S_ALK)*(X_PP/X_PAO)/(K_PP+X_PP/X_PAO)*X_PAO
-aero_storage_PP	(-Y_PHA)				?			-1	?					1	(-Y_PHA)				q_PP*S_O2/(K_O2_PAO+S_O2)*S_PO4/(K_PS+S_PO4)*S_ALK/(K_ALK_PAO+S_ALK)*(X_PHA/X_PAO)/(K_PHA+X_PHA/X_PAO)*(K_MAX-X_PP/X_PAO)/(K_IPP+K_MAX-X_PP/X_PAO)*X_PAO
-PAO_aero_growth_PHA	?				?			?	?				1		(-1)/Y_PAO				mu_PAO*S_O2/(K_O2_PAO+S_O2)*S_NH4/(K_NH4_PAO+S_NH4)*S_PO4/(K_P_PAO+S_PO4)*S_ALK/(K_ALK_PAO+S_ALK)*(X_PHA/X_PAO)/(K_PHA+X_PHA/X_PAO)*X_PAO
-PAO_lysis					?			?	?	f_XI_PAO	1-f_XI_PAO		-1						b_PAO*X_PAO*S_ALK/(K_ALK_PAO+S_ALK)
-PP_lysis					?			1	?					-1					b_PP*X_PP*S_ALK/(K_ALK_PAO+S_ALK)
-PHA_lysis			1		?				?						-1				b_PHA*X_PHA*S_ALK/(K_ALK_PAO+S_ALK)
-auto_aero_growth	(Y_A-32/7)/Y_A				?		1/Y_A	?	?							1			mu_AUT*S_O2/(K_O2_AUT+S_O2)*S_NH4/(K_NH4_AUT+S_NH4)*S_PO4/(K_P_AUT+S_PO4)*S_ALK/(K_ALK_AUT+S_ALK)*X_AUT
-auto_lysis					?			?	?	f_XI_AUT	1-f_XI_AUT					-1			b_AUT*X_AUT
-precipitation								-1	?								-3.45	?	k_PRE*S_PO4*X_MeOH
-redissolution								1	?								3.45	?	k_RED*X_MeP*S_ALK/(K_ALK_PRE+S_ALK)
+	(process)	S_NO3	S_NO2	S_NO	S_N2O	S_N2	S_S	S_PO4	S_O2	X_DPAO	X_PP	X_PHA	X_I	(rate expression)			
+1	anaerobic storage of X_PHA						-1	Y_PO4			-Y_PO4	1		q_PHA*S_S/(K_S_DPAO+S_S)*(X_PP/X_DPAO)/(K_PP_DPAO+X_PP/X_DPAO)*X_DPAO			
+2	anoxic storage of X_PP on NO3-	-Y_PHA/1.14	Y_PHA/1.14					-1			1	-Y_PHA		q_PP*S_NO3/(K_NO3+S_NO3)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO			
+3	anoxic storage of X_PP on NO2-		-Y_PHA/0.57	Y_PHA/0.57				-1			1	-Y_PHA		q_PP*S_NO2/(K_NO2+S_NO2)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO			
+4	anoxic storage of X_PP on NO			-Y_PHA/0.57	Y_PHA/0.57			-1			1	-Y_PHA		q_PP*S_NO/(K_NO+S_NO)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO			
+5	anoxic storage of X_PP on N2O				-Y_PHA/0.57	Y_PHA/0.57		-1			1	-Y_PHA		q_PP*S_N2O/(K_N2O+S_N2O)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO			
+6	anoxic growth on NO3-	-(1-Y_DPAO_NOX)/(1.14*Y_DPAO_NOX)	(1-Y_DPAO_NOX)/(1.14*Y_DPAO_NOX)					-i_P_BM		1		-1/Y_DPAO_NOX		mu_DPAO1*S_NO3/(K_NO3+S_NO3)*S_PO4(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO			
+7	anoxic growth on NO2-		-(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)	(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)				-i_P_BM		1		-1/Y_DPAO_NOX		mu_DPAO2*S_NO2/(K_NO2+S_NO2)*S_PO4(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO			
+8	anoxic growth on NO			-(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)	(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)			-i_P_BM		1		-1/Y_DPAO_NOX		mu_DPAO3*S_NO/(K_NO+S_NO)*S_PO4(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO			
+9	anoxic growth on N2O				-(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)	(1-Y_DPAO_NOX)/(0.57*Y_DPAO_NOX)		-i_P_BM		1		-1/Y_DPAO_NOX		mu_DPAO4*S_N2O/(K_N2O+S_N2O)*S_PO4(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO			
+10	anoxic endogenous respiration on NO3-	-(1-f_I)/1.14	(1-f_I)/1.14					i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_NO3/(K_NOX+S_NO3)*X_DPAO			
+11	anoxic endogenous respiration on NO2-		-(1-f_I)/0.57	(1-f_I)/0.57				i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_NO2/(K_NOX+S_NO2)*X_DPAO			
+12	anoxic endogenous respiration on NO			-(1-f_I)/0.57	(1-f_I)/0.57			i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_NO/(K_NOX+S_NO)*X_DPAO			
+13	anoxic endogenous respiration on N2O				-(1-f_I)/0.57	(1-f_I)/0.57		i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_N2O/(K_NOX+S_N2O)*X_DPAO			
+14	anoxic respiration of X_PP on NO3-							1			-1			b_PP*S_NO3/(K_NOX+S_NO3)*X_PP			
+15	anoxic respiration of X_PP on NO2-							1			-1			b_PP*S_NO2/(K_NOX+S_NO2)*X_PP			
+16	anoxic respiration of X_PP on NO							1			-1			b_PP*S_NO/(K_NOX+S_NO)*X_PP			
+17	anoxic respiration of X_PP on N2O							1			-1			b_PP*S_N2O/(K_NOX+S_N2O)*X_PP			
+18	anoxic respiration of X_PHA on NO3-	-1/1.14	1/1.14									-1		b_PHA*S_NO3/(K_NOX+S_NO3)*X_PHA			
+19	anoxic respiration of X_PHA on NO2-		-1/0.57	1/0.57								-1		b_PHA*S_NO2/(K_NOX+S_NO2)*X_PHA			
+20	anoxic respiration of X_PHA on NO			-1/0.57	1/0.57							-1		b_PHA*S_NO/(K_NOX+S_NO)*X_PHA			
+21	anoxic respiration of X_PHA on N2O				-1/0.57	1/0.57						-1		b_PHA*S_N2O/(K_NOX+S_N2O)*X_PHA			
+	aerobic storage of X_PP on O2							-1	-Y_PHA		1	-Y_PHA		q_PP*S_O2/(K_O2+S_O2)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO			
+	aerobic growth on O2							-i_P_BM	?	1		-1/Y_DPAO_O2		mu_DPAO5*S_O2/(K_O2+S_O2)*S_PO4(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO			
+	aerobic endogenous respiration on O2							i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_O2/(K_O2+S_O2)*X_DPAO			
+	aerobic respiration of X_PP on O2							1			-1			b_PP*S_O2/(K_O2+S_O2)*X_PP			
+	aerobic respiration of X_PHA on O2						1					-1		b_PHA*S_O2/(K_O2+S_O2)*X_PHA			
+																	
+																	
+																	
+																	
