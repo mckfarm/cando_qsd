@@ -1,0 +1,4 @@
+ID	description	formula	particle_size	degradability	organic	measured_as	i_C	i_N	i_P	i_K	i_Mg	i_Ca	i_mass	i_charge	i_COD	i_NOD	f_BOD5_COD	f_uBOD_COD	f_Vmass_Totmass	CAS	PubChem
+X_PHA	PHA		Particulate	Slowly	TRUE	COD	0.333333333	0	0	0	0	0	0.597222222	0			0.579876434	0.862804	1		
+X_I	Inert biomass		Particulate	Undegradable	TRUE	COD	0.366697674	0.02	0.01	0.004778	0	0	0.75	0			0	0	0.868217054		
+X_PP	Intracellular polyphosphate	PO4-	Particulate	Undegradable	FALSE	P							3				0	0	0		

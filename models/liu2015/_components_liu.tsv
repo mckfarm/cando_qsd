@@ -4,10 +4,10 @@ S_NO2	nitrite	NO2-	Soluble	Undegradable	FALSE	N
 S_NO	nitric oxide	NO	Soluble	Undegradable	FALSE	N															
 S_N2O	nitrous oxide	N2O	Dissolved gas	Undegradable	FALSE	N															
 S_N2	dinitrogen	N2	Dissolved gas	Undegradable	FALSE	N															
-S_S	readily degradable substrate		Soluble	Readily	TRUE	COD															
+S_S	readily degradable substrate		Soluble	Readily	TRUE	COD	0.32	0.03	0.01	0	0	0	0.502512563	0			0.717	0.862804	1		
 S_PO4	orthophosphate	PO4-3	Soluble	Undegradable	FALSE	P															
-X_DPAO	phosphorus accumulating organisms		Particulate	Slowly	TRUE	COD			0.02												
-X_PP	polyphosphate		Particulate	Undegradable	TRUE	COD															
-X_PHA	polyhydroxyalkanoates		Particulate	Slowly	TRUE	COD															
-X_I	inert biomass		Particulate	Undegradable	FALSE	COD			0.01												
+X_DPAO	phosphorus accumulating organisms		Particulate	Slowly	TRUE	COD	0.366	0.0683	0.019	0.004768	0.002964	0.0024	0.776638708	0			0.566639299	0.794	0.87		
+X_PP	polyphosphate	(K0.33Mg0.33PO3)n	Particulate	Undegradable	TRUE	P											0	0	0		
+X_PHA	polyhydroxyalkanoates		Particulate	Slowly	TRUE	COD	0.375	0	0	0	0	0	0.84375	0			0.579876434	0.862804	1		
+X_I	inert biomass		Particulate	Undegradable	FALSE	COD	0.366697674	0.02	0.01	0.004778	0	0	0.75	0			0	0	0.868217054		
 S_O2	oxygen	O2	Dissolved gas	Undegradable	FALSE																
