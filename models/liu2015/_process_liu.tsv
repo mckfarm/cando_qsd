@@ -21,7 +21,7 @@ anoxic respiration of X_PHA on NO2-		-1/0.57	1/0.57								-1		b_PHA*S_NO2/(K_NO
 anoxic respiration of X_PHA on NO			-1/0.57	1/0.57							-1		b_PHA*S_NO/(K_NOX+S_NO)*X_PHA
 anoxic respiration of X_PHA on N2O				-1/0.57	1/0.57						-1		b_PHA*S_N2O/(K_NOX+S_N2O)*X_PHA
 aerobic storage of X_PP on O2							-1	-Y_PHA		1	-Y_PHA		q_PP*S_O2/(K_O2+S_O2)*S_PO4/(K_PO4_PP+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*(K_MAX_DPAO-X_PP/X_DPAO)/(K_iPP+K_MAX_DPAO-X_PP/X_DPAO)*X_DPAO
-aerobic growth on O2							-i_P_BM	?	1		-1/Y_DPAO_O2		mu_DPAO5*S_O2/(K_O2+S_O2)*S_PO4/(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO
+aerobic growth on O2							-i_P_BM	-1	1		-1/Y_DPAO_O2		mu_DPAO5*S_O2/(K_O2+S_O2)*S_PO4/(K_DPAO_PO4+S_PO4)*(X_PHA/X_DPAO)/(K_PHA+X_PHA/X_DPAO)*X_DPAO
 aerobic endogenous respiration on O2							i_P_BM-i_P_XI*f_I		-1			f_I	b_DPAO*S_O2/(K_O2+S_O2)*X_DPAO
 aerobic respiration of X_PP on O2							1			-1			b_PP*S_O2/(K_O2+S_O2)*X_PP
 aerobic respiration of X_PHA on O2						1					-1		b_PHA*S_O2/(K_O2+S_O2)*X_PHA
