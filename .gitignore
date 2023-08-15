@@ -1,2 +1,4 @@
 *.DS_store
 *checkpoint*
+.Rproj.user
+*.nb.html

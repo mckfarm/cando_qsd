@@ -1,0 +1,19 @@
+---
+title: "Test plots"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+
+```
+
+```{r}
+df <- read_csv("./models/liu2015/test_series.csv", skip = 1)
+```
+```{r}
+ggplot(data = df, aes(x = `t [d]`, y = `S_S [mg/L]`)) +
+  geom_point() +
+  xlim(1,1.5)
+```
+
