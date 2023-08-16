@@ -5,15 +5,43 @@ output: html_notebook
 
 ```{r}
 library(tidyverse)
+```
+
+
+```{r}
+df_raw <- read_csv("./models/liu2015/test_series.csv", col_names = FALSE)
+
+# parse df so multiple header rows from QSDSan output can be converted into proper format for long df use in R
+
+df_raw %>%
+  select(-c(1,2)) %>%
+  slice(1:2) %>%
+  mutate_if(is.factor, as.character) %>%
+  rbind(.) %>% 
+  summarise_all(toString) %>% 
+  as.character -> comp.header
+
+
+df <- df_raw %>% 
+  select(-X1) %>%
+  slice(-c(1,2)) %>%
+  rename_at(2:ncol(.), list(~comp.header)) %>%
+  pivot_longer(-X2) %>% 
+  separate(name, sep = ", ", into = c("loc", "unit"))
+
+# manually change col name of time column
+names(df)[names(df) == "X2"] <- "time"
 
 ```
 
+
 ```{r}
-df <- read_csv("./models/liu2015/test_series.csv", skip = 1)
-```
-```{r}
-ggplot(data = df, aes(x = `t [d]`, y = `S_S [mg/L]`)) +
-  geom_point() +
-  xlim(1,1.5)
+
+df %>% filter(unit == "S_N2O [mg/L]") %>%
+  ggplot(data = ., aes(x = time, y = value, color = loc)) +
+    geom_point()
+
+
+
 ```
 
