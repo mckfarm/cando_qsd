@@ -40,10 +40,9 @@ df$time <- as.numeric(df$time)
 
 ```{r}
 
-df %>% filter(unit == "S_N2O [mg/L]") %>%
+df %>% filter(unit == "X_DPAO [mg/L]") %>%
   ggplot(data = ., aes(x = time, y = value, color = loc)) +
     geom_point()
   
-
 ```
 
