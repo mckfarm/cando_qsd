@@ -9,7 +9,7 @@ library(tidyverse)
 
 
 ```{r}
-df_raw <- read_csv("./models/liu2015/test_series.csv", col_names = FALSE)
+df_raw <- read.csv("./models/liu2015/test_series.csv", header = FALSE)
 
 # parse df so multiple header rows from QSDSan output can be converted into proper format for long df use in R
 
@@ -23,14 +23,17 @@ df_raw %>%
 
 
 df <- df_raw %>% 
-  select(-X1) %>%
+  select(-V1) %>%
   slice(-c(1,2)) %>%
   rename_at(2:ncol(.), list(~comp.header)) %>%
-  pivot_longer(-X2) %>% 
+  pivot_longer(-V2) %>% 
   separate(name, sep = ", ", into = c("loc", "unit"))
 
 # manually change col name of time column
-names(df)[names(df) == "X2"] <- "time"
+names(df)[names(df) == "V2"] <- "time"
+
+df$value <- as.numeric(df$value)
+df$time <- as.numeric(df$time)
 
 ```
 
@@ -40,8 +43,7 @@ names(df)[names(df) == "X2"] <- "time"
 df %>% filter(unit == "S_N2O [mg/L]") %>%
   ggplot(data = ., aes(x = time, y = value, color = loc)) +
     geom_point()
-
-
+  
 
 ```
 
